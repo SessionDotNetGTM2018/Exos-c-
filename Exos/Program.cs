@@ -1,10 +1,5 @@
 ﻿using Exos.Agence;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Exos.Agence;
 
 namespace Exos
 {
@@ -12,7 +7,7 @@ namespace Exos
     {
         static void Main(string[] args)
         {
-            var agence = new Exos.Agence.Agence();
+            var agence = new Agence.Agence();
             agence.Nom = "Budget";
             agence.Ville = "Paris";
 
@@ -29,6 +24,8 @@ namespace Exos
             voiture1.Categorie = categorieCompacte;
             voiture1.Marque = "Peugeot";
             voiture1.Modele = "308";
+            categorieCompacte.Voitures.Add(voiture1);
+            agence.Parc.Add(voiture1);
 
             var contratLocation = new ContratLocation();
             contratLocation.Client = client;
@@ -41,10 +38,6 @@ namespace Exos
                                 $"{contratLocation.CalculerMontantLocation()} EUR");
 
             Console.ReadKey();
-
-            //var categorieFamiliale = new CategorieVoiture();
-            //categorieFamiliale.Nom = "Familiale";
-            //categorieFamiliale.PrixJour = 75;
         }
     }
 
