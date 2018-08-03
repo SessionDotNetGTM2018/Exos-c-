@@ -42,6 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Heritage1\Animal.cs" />
+    <Compile Include="Heritage1\Chat.cs" />
+    <Compile Include="Heritage1\Chien.cs" />
+    <Compile Include="Heritage1\Mammifere.cs" />
+    <Compile Include="Heritage1\Oiseau.cs" />
+    <Compile Include="Heritage1\Poule.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
