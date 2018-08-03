@@ -42,6 +42,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Agence\Agence.cs" />
+    <Compile Include="Agence\Camionette.cs" />
+    <Compile Include="Agence\CategorieVoiture.cs" />
+    <Compile Include="Agence\Client.cs" />
+    <Compile Include="Agence\ContratLocation.cs" />
+    <Compile Include="Agence\Employe.cs" />
+    <Compile Include="Agence\Personne.cs" />
+    <Compile Include="Agence\Vehicule.cs" />
+    <Compile Include="Agence\Voiture.cs" />
     <Compile Include="Heritage1\Animal.cs" />
     <Compile Include="Heritage1\Chat.cs" />
     <Compile Include="Heritage1\Chien.cs" />
