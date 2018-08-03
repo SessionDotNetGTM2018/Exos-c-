@@ -4,5 +4,10 @@
     {
         public int PoidsMaxEnKilos { get; set; }
         public int PrixJour { get; set; }
+
+        public override double GetPrixJour()
+        {
+            return PrixJour;
+        }
     }
 }

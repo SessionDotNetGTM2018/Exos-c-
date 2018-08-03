@@ -11,9 +11,9 @@ namespace Exos.Agence
         public Client Client { get; set; }
         public Vehicule Vehicule { get; set; }
 
-        public double CalculerMontantLocation(DateTime dateDebut, DateTime dateFin)
+        public double CalculerMontantLocation()
         {
-            var nombreJours = (dateFin - dateDebut).TotalDays;
+            var nombreJours = (DateFin - DateDebut).TotalDays;
             return Vehicule.GetPrixJour() * nombreJours;
         }
     }

@@ -5,9 +5,6 @@
         public string Marque { get; set; }
         public string Modele { get; set; }
 
-        public double GetPrixJour()
-        {
-            return 0;
-        }
+        public abstract double GetPrixJour();
     }
 }
