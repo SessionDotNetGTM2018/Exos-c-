@@ -17,7 +17,11 @@ namespace ExemplesLinq
         private static readonly List<Ville> villes = new List<Ville> {
             new Ville { Nom = "Paris", CodePostal = "75013" },
             new Ville { Nom = "Bordeaux", CodePostal = "33000" },
+            new Ville { Nom = "Mérignac", CodePostal = "33700" },
+            new Ville { Nom = "Floirac", CodePostal = "33270" },
             new Ville { Nom = "Sarlat-La-Canéda", CodePostal = "24200" },
+            new Ville { Nom = "Bergerac", CodePostal = "24100" },
+            new Ville { Nom = "Périgueux", CodePostal = "24000" },
             new Ville { Nom = "Marseille", CodePostal = "13000" },
         };
 
@@ -34,6 +38,7 @@ namespace ExemplesLinq
             RequeteAvecFiltre();
             RequeteAvecTri();
             RequeteAvecGroupement();
+            RequeteAvecGroupement2();
             RequeteAvecTypeDeRetourDifferent();
             RequeteAvecJointure();
 
@@ -108,30 +113,73 @@ namespace ExemplesLinq
                               Lettre = groupe.Key,
                               Prenoms = groupe.ToList()
                           };
-            foreach(var resultat in requete)
+            foreach (var resultat in requete)
             {
                 Console.WriteLine(resultat.Lettre);
-                foreach(var prenom in resultat.Prenoms)
+                foreach (var prenom in resultat.Prenoms)
                 {
                     Console.WriteLine($"\t{prenom}");
                 }
             }
+            Console.WriteLine("*************************");
 
             // Syntaxe de méthode
             var requete2 = prenoms
                         .OrderBy(prenom => prenom)
                         .GroupBy(prenom => prenom[0])
                         .Select(groupe => new
-                            {
-                                Lettre = groupe.Key,
-                                Prenoms = groupe.ToList()
-                            });
+                        {
+                            Lettre = groupe.Key,
+                            Prenoms = groupe.ToList()
+                        });
             foreach (var resultat in requete2)
             {
                 Console.WriteLine(resultat.Lettre);
                 foreach (var prenom in resultat.Prenoms)
                 {
                     Console.WriteLine($"\t{prenom}");
+                }
+            }
+        }
+
+        private static void RequeteAvecGroupement2()
+        {
+            AfficherEntete();
+
+            // Syntaxe de requête
+            var requete = from ville in villes
+                          orderby ville.Nom ascending
+                          group ville by ville.Departement into groupe
+                          select new
+                          {
+                              NumeroDepartement = groupe.Key,
+                              Villes = groupe.ToList()
+                          };
+            foreach (var resultat in requete)
+            {
+                Console.WriteLine(resultat.NumeroDepartement);
+                foreach (var ville in resultat.Villes)
+                {
+                    Console.WriteLine($"  - {ville.Nom} ({ville.CodePostal})");
+                }
+            }
+            Console.WriteLine("*************************");
+
+            // Syntaxe de méthode
+            var requete2 = villes
+                        .OrderBy(x => x.Nom)
+                        .GroupBy(x => x.Departement)
+                        .Select(groupe => new
+                        {
+                            NumeroDepartement = groupe.Key,
+                            Villes = groupe.ToList()
+                        });
+            foreach (var resultat in requete2)
+            {
+                Console.WriteLine(resultat.NumeroDepartement);
+                foreach (var ville in resultat.Villes)
+                {
+                    Console.WriteLine($"  - {ville.Nom} ({ville.CodePostal})");
                 }
             }
         }
