@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 
 namespace ExemplesLinq
@@ -44,9 +45,16 @@ namespace ExemplesLinq
             AfficherEntete();
 
             // Syntaxe de requête
-
+            var requete = from prenom in prenoms
+                          select prenom;
+            foreach (var resultat in requete)
+                Console.WriteLine(resultat);
+            Console.WriteLine("*************************");
 
             // Syntaxe de méthode
+            var requete2 = prenoms.Select(prenom => prenom);
+            foreach (var resultat in requete2)
+                Console.WriteLine(resultat);
         }
 
         private static void RequeteAvecFiltre()
@@ -54,9 +62,18 @@ namespace ExemplesLinq
             AfficherEntete();
 
             // Syntaxe de requête
-
+            var requete = from prenom in prenoms
+                          where prenom.StartsWith("A")
+                          select prenom;
+            foreach (var resultat in requete)
+                Console.WriteLine(resultat);
+            Console.WriteLine("*************************");
 
             // Syntaxe de méthode
+            var requete2 = prenoms.Where(prenom => prenom.StartsWith("A"))
+                            .Select(prenom => prenom);
+            foreach (var resultat in requete2)
+                Console.WriteLine(resultat);
         }
 
         private static void RequeteAvecTri()
@@ -64,9 +81,18 @@ namespace ExemplesLinq
             AfficherEntete();
 
             // Syntaxe de requête
-
+            var requete = from prenom in prenoms
+                          orderby prenom descending
+                          select prenom;
+            foreach (var resultat in requete)
+                Console.WriteLine(resultat);
+            Console.WriteLine("*************************");
 
             // Syntaxe de méthode
+            var requete2 = prenoms.OrderByDescending(prenom => prenom)
+                                   .Select(prenom => prenom);
+            foreach (var resultat in requete2)
+                Console.WriteLine(resultat);
         }
 
         private static void RequeteAvecGroupement()
@@ -74,9 +100,40 @@ namespace ExemplesLinq
             AfficherEntete();
 
             // Syntaxe de requête
-
+            var requete = from prenom in prenoms
+                          orderby prenom ascending
+                          group prenom by prenom[0] into groupe
+                          select new
+                          {
+                              Lettre = groupe.Key,
+                              Prenoms = groupe.ToList()
+                          };
+            foreach(var resultat in requete)
+            {
+                Console.WriteLine(resultat.Lettre);
+                foreach(var prenom in resultat.Prenoms)
+                {
+                    Console.WriteLine($"\t{prenom}");
+                }
+            }
 
             // Syntaxe de méthode
+            var requete2 = prenoms
+                        .OrderBy(prenom => prenom)
+                        .GroupBy(prenom => prenom[0])
+                        .Select(groupe => new
+                            {
+                                Lettre = groupe.Key,
+                                Prenoms = groupe.ToList()
+                            });
+            foreach (var resultat in requete2)
+            {
+                Console.WriteLine(resultat.Lettre);
+                foreach (var prenom in resultat.Prenoms)
+                {
+                    Console.WriteLine($"\t{prenom}");
+                }
+            }
         }
 
         private static void RequeteAvecTypeDeRetourDifferent()
