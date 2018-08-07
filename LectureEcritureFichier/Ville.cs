@@ -1,4 +1,4 @@
-﻿namespace ExemplesLinq
+﻿namespace LectureEcritureFichier
 {
     public class Ville
     {
