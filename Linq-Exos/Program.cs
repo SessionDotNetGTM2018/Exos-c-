@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Linq_Exos
 {
@@ -14,6 +12,8 @@ namespace Linq_Exos
         {
             ScoresSuperieursA80();
             ScoresParOrdreCroissant();
+            NombreOccurrencesLettres();
+
             Console.ReadKey();
         }
 
@@ -30,6 +30,31 @@ namespace Linq_Exos
             var requete2 = scores.Where(x => x > 80);
 
             AfficherResultats(requete);
+        }
+
+        private static void NombreOccurrencesLettres()
+        {
+            AfficherEntete("Nombre d'occurrences de chaque lettre");
+
+            Console.WriteLine("Entre un mot:");
+            var mot = Console.ReadLine();
+
+            // Syntaxe de requête
+            var requete = from lettre in mot
+                          group lettre by lettre into groupe
+                          select groupe;
+            foreach (var groupe in requete)
+            {
+                Console.WriteLine($"Lettre {groupe.Key}: {groupe.Count()}");
+            }
+            Console.WriteLine("********************");
+
+            // Syntaxe de méthode
+            var requete2 = mot.GroupBy(x => x);
+            foreach (var groupe in requete2)
+            {
+                Console.WriteLine($"Lettre {groupe.Key}: {groupe.Count()}");
+            }
         }
 
         private static void ScoresParOrdreCroissant()
