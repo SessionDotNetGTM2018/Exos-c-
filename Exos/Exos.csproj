@@ -51,12 +51,12 @@
     <Compile Include="Agence\Personne.cs" />
     <Compile Include="Agence\Vehicule.cs" />
     <Compile Include="Agence\Voiture.cs" />
-    <Compile Include="Heritage1\Animal.cs" />
-    <Compile Include="Heritage1\Chat.cs" />
-    <Compile Include="Heritage1\Chien.cs" />
-    <Compile Include="Heritage1\Mammifere.cs" />
-    <Compile Include="Heritage1\Oiseau.cs" />
-    <Compile Include="Heritage1\Poule.cs" />
+    <Compile Include="Heritage\Animal.cs" />
+    <Compile Include="Heritage\Chat.cs" />
+    <Compile Include="Heritage\Chien.cs" />
+    <Compile Include="Heritage\Mammifere.cs" />
+    <Compile Include="Heritage\Oiseau.cs" />
+    <Compile Include="Heritage\Poule.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
