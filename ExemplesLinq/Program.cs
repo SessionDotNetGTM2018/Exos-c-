@@ -39,7 +39,6 @@ namespace ExemplesLinq
             RequeteAvecTri();
             RequeteAvecGroupement();
             RequeteAvecGroupement2();
-            RequeteAvecTypeDeRetourDifferent();
             RequeteAvecJointure();
 
             Console.ReadKey();
@@ -184,24 +183,42 @@ namespace ExemplesLinq
             }
         }
 
-        private static void RequeteAvecTypeDeRetourDifferent()
-        {
-            AfficherEntete();
-
-            // Syntaxe de requête
-
-
-            // Syntaxe de méthode
-        }
-
         private static void RequeteAvecJointure()
         {
             AfficherEntete();
 
             // Syntaxe de requête
+            var requete = from ville in villes
+                          join departement in departements
+                            on ville.Departement equals departement.Numero
+                          select new
+                          {
+                              Ville = ville.Nom,
+                              NomDepartement = departement.Nom
+                          };
 
+            foreach (var resultat in requete)
+            {
+                Console.WriteLine($" - {resultat.Ville} ({resultat.NomDepartement})");
+            }
+            Console.WriteLine("*************************");
 
             // Syntaxe de méthode
+            var requete2 = villes
+                .Join(
+                    departements,
+                    ville => ville.Departement,
+                    departement => departement.Numero,
+                    (ville, departement) => new
+                    {
+                        Ville = ville.Nom,
+                        NomDepartement = departement.Nom
+                    });
+
+            foreach (var resultat in requete2)
+            {
+                Console.WriteLine($" - {resultat.Ville} ({resultat.NomDepartement})");
+            }
         }
 
         private static void AfficherEntete([CallerMemberName]string nomMethodeAppelant = null)
