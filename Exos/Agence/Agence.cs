@@ -4,6 +4,12 @@ namespace Exos.Agence
 {
     public sealed class Agence
     {
+        public Agence()
+        {
+            Parc = new List<Vehicule>();
+            Personnel = new List<Employe>();
+        }
+
         public string Nom { get; set; }
         public string Adresse { get; set; }
         public string Ville { get; set; }

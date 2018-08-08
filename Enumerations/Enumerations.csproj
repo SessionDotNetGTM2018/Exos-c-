@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{695947E3-4A84-4906-93BB-9D89B4952F78}</ProjectGuid>
+    <ProjectGuid>{8FA5F761-04D7-43C2-9C4C-57432FCAF704}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Exos</RootNamespace>
-    <AssemblyName>Exos</AssemblyName>
+    <RootNamespace>Enumerations</RootNamespace>
+    <AssemblyName>Enumerations</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,21 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Agence\Agence.cs" />
-    <Compile Include="Agence\Camionette.cs" />
-    <Compile Include="Agence\CategorieVoiture.cs" />
-    <Compile Include="Agence\Client.cs" />
-    <Compile Include="Agence\ContratLocation.cs" />
-    <Compile Include="Agence\Employe.cs" />
-    <Compile Include="Agence\Personne.cs" />
-    <Compile Include="Agence\Vehicule.cs" />
-    <Compile Include="Agence\Voiture.cs" />
-    <Compile Include="Heritage\Animal.cs" />
-    <Compile Include="Heritage\Chat.cs" />
-    <Compile Include="Heritage\Chien.cs" />
-    <Compile Include="Heritage\Mammifere.cs" />
-    <Compile Include="Heritage\Oiseau.cs" />
-    <Compile Include="Heritage\Poule.cs" />
+    <Compile Include="Evenement.cs" />
+    <Compile Include="JourSemaine.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
